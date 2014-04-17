@@ -7,6 +7,7 @@ $(window).load(function () {
     var sheetView = new MusicSheetView(musicSheet, $('#musicSheet'));
     
     $('#playButton').click(function () {
+        musicSheet.stop();
         musicSheet.play(function () {
             sheetView.paintCanvas();
         });
@@ -40,6 +41,7 @@ $(window).load(function () {
         }
         var reader = new FileReader();
         reader.onload = function (event) {
+            $('#loadButton').popover('hide');
             try {
                 musicSheet.load(event.target.result);
                 $('#fileName').val(files[0].name);
@@ -50,6 +52,7 @@ $(window).load(function () {
             $('#file').val('');
         };
         reader.readAsText(files[0]);
+        $('#loadButton').popover('show');
     });
     
     $('#saveSettingsButton').click(function () {
