@@ -107,7 +107,7 @@ function MusicSheetView(model, element) {
     
     $(document).keydown(function (event) {
         view.ctrlDown = event.ctrlKey;
-        switch (event.keyCode) {
+        switch (event.which) {
             case 27:
                 view.model.selectedNotes.length = 0;
                 break;
